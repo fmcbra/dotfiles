@@ -1,0 +1,74 @@
+##
+# ~/.bashrc_prompt
+##
+
+_bashrc_cc_norm='\[\033[0m\]'
+_bashrc_cc_bold='\[\033[01;37m\]'
+
+_bashrc_cc_red='\[\033[0;31m\]'
+_bashrc_cc_green='\[\033[0;32m\]'
+
+_bashrc_cc_dgrey='\[\033[1;30m\]'
+_bashrc_cc_lgrey='\[\033[0;37m\]'
+
+## {{{ function _bashrc_colour()
+function _bashrc_colour()
+{
+  [[ $# -ge 2 ]] || return
+
+  local colour="$1"
+  shift
+
+  case "$colour" in
+    normal)
+      echo -en $_bashrc_cc_norm; echo -n "$@"
+      ;;
+    red)
+      echo -en $_bashrc_cc_red; echo -n "$@"; echo -en $_bashrc_cc_norm
+      ;;
+    green)
+      echo -en $_bashrc_cc_green; echo -n "$@"; echo -en $_bashrc_cc_norm
+      ;;
+    light-grey)
+      echo -en $_bashrc_cc_lgrey; echo -n "$@"; echo -en $_bashrc_cc_norm
+      ;;
+    dark-grey)
+      echo -en $_bashrc_cc_dgrey; echo -n "$@"; echo -en $_bashrc_cc_norm
+      ;;
+    *)
+      echo -n "$@"
+      ;;
+  esac
+}
+## }}}
+
+_bashrc_ps1_start="$(_bashrc_colour dark-grey '(')"
+[[ $EUID -eq 0 ]] && _bashrc_ps1_start="$_bashrc_ps1_start$(_bashrc_colour red '\$')"
+[[ $EUID -eq 0 ]] || _bashrc_ps1_start="$_bashrc_ps1_start$(_bashrc_colour green '\$')"
+_bashrc_ps1_start="$_bashrc_ps1_start$(_bashrc_colour dark-grey ')')"
+
+_bashrc_ps1_userhost="$(_bashrc_colour light-grey '\u')"
+_bashrc_ps1_userhost="$_bashrc_ps1_userhost$(_bashrc_colour dark-grey '@')"
+_bashrc_ps1_userhost="$_bashrc_ps1_userhost$(_bashrc_colour light-grey "$HOSTNAME")"
+
+_bashrc_ps1_pwd="$(_bashrc_colour light-grey '\w')"
+
+_bashrc_ps1_end="$(_bashrc_colour dark-grey '>')"
+_bashrc_ps1_end="$_bashrc_ps1_end$(_bashrc_colour light-grey '>')"
+_bashrc_ps1_end="$_bashrc_ps1_end$(_bashrc_colour dark-grey '>')"
+
+PS1="
+$_bashrc_ps1_start $_bashrc_ps1_userhost$(_bashrc_colour dark-grey ':')$_bashrc_ps1_pwd
+$_bashrc_ps1_end "
+
+case "$TERM" in
+  xterm*|rxvt*)
+    PS1="\[\e]0;\u@\h: \w\a\]$PS1"
+    ;;
+  *)
+    ;;
+esac
+
+##
+# vim: ts=2 sw=2 et fdm=marker :
+##

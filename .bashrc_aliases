@@ -1,0 +1,87 @@
+##
+# ~/.bashrc_aliases
+##
+
+sudo=$(type -p sudo)
+[[ $EUID -eq 0 ]] && sudo=
+
+alias rb="$sudo shutdown -r now"
+alias sd="$sudo shutdown -h now"
+
+alias dpkg="$sudo dpkg"
+alias apt="$sudo apt"
+alias apt-get="$sudo apt-get"
+
+alias au='apt-get update'
+alias ai='apt-get install'
+alias ap='apt-get purge'
+
+alias adu='apt-get dist-upgrade'
+alias asu='apt-get safe-upgrade'
+
+alias aar='apt-get autoremove --purge'
+
+if [[ -n $(type -p apt) ]]
+then
+  alias alu="$sudo apt list --upgradable"
+else
+  alias alu="$sudo apt-get -u upgrade --assume-no"
+fi
+
+# Array of options used to build ls alias below
+ls_options=('--group-directories-first')
+
+if [[ -n $(type -p dircolors) ]]
+then
+  [[ -r ~/.dircolors ]] \
+    && eval "$(dircolors -b ~/.dircolors)" \
+    || eval "$(dircolors -b)"
+
+  ls_options+=('--color=auto')
+
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+fi
+
+alias cp='cp --reflink=auto'
+
+alias ls="ls ${ls_options[@]}"
+unset ls_options
+
+alias l='ls -lih'
+alias la='ls -a'
+alias lla='l -a'
+alias lz='l -Z'
+alias d='l -d'
+
+alias df='df -h -BM'
+
+if [[ -n $(type -P git) ]]
+then
+  alias ginit='git init && git ci --allow-empty -m Initial\ commit'
+  alias gimport='git a . && git ci -m Initial\ import'
+fi
+
+if [[ -n $(type -p tig) ]]
+then
+  [[ -d /etc/.git ]] && alias etc-tig='GIT_DIR=/etc/.git tig'
+fi
+
+if [[ -n $(type -P duperemove) ]]
+then
+  alias duperemove='duperemove --hashfile=/var/lib/duperemove/hash -d'
+  alias dedup-rootfs='duperemove -r / 2>&1 |tee -a /var/log/duperemove.log'
+
+  function dedup-path()
+  {
+    duperemove "$@" 2>&1 |tee -a /var/log/duperemove.log
+    return $?
+  }
+fi
+
+unset sudo
+
+##
+# vim: ts=2 sw=2 et fdm=marker :
+##
