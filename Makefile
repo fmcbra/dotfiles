@@ -1,3 +1,7 @@
+SHELL = /bin/bash
+
+DOTFILES_GIT_URL = https://github.com/fmcbra/dotfiles
+
 DOTFILES =           \
   .bash_logout       \
   .bash_profile      \
@@ -20,10 +24,11 @@ ifeq ($(origin HOME), undefined)
 endif
 
 .PHONY: all
-all: install-symlinks $(HOME)/.dotfiles
+all: init-submodules install-symlinks
 
-$(HOME)/.dotfiles:
-	cd $(HOME)/.dotfiles && git submodule update --init --recursive 
+.PHONY: init-submodules
+init-submodules:
+	(cd $(HOME)/.dotfiles; git submodule update --init --recursive)
 
 .PHONY: install-symlinks
 install-symlinks:
