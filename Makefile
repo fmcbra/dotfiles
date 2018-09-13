@@ -26,7 +26,7 @@ all: init-submodules install-symlinks
 
 .PHONY: init-submodules
 init-submodules:
-	(cd $(HOME)/.dotfiles; git submodule update --init --recursive)
+	git -C $(HOME)/.dotfiles submodule update --init --recursive
 
 .PHONY: install-symlinks
 install-symlinks:
