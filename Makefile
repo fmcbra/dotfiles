@@ -1,7 +1,5 @@
 SHELL = /bin/bash
 
-DOTFILES_GIT_URL = https://github.com/fmcbra/dotfiles
-
 DOTFILES =           \
   .bash_logout       \
   .bash_profile      \
