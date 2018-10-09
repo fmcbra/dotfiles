@@ -34,6 +34,12 @@ case "${TERM}" in
     ;;
 esac
 
+for bindir in ~/bin
+do
+  [[ ${PATH/$bindir/} == $PATH ]] && export PATH="$HOME/bin:$PATH"
+done
+unset bindir
+
 # If ~/bin directory exists, prepend it to PATH
 [[ -d ~/bin ]] && export PATH="$HOME/bin:$PATH"
 
