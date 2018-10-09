@@ -34,12 +34,6 @@ case "${TERM}" in
     ;;
 esac
 
-# If BCC is installed, add its tools directory to PATH
-[[ -d /usr/share/bcc/tools ]] && export PATH="/usr/share/bcc/tools:$PATH"
-
-# If /com/scripts/bin directory exists, prepend it to PATH
-[[ -d /com/scripts/bin ]] && export PATH="/com/scripts/bin:$PATH"
-
 # If ~/bin directory exists, prepend it to PATH
 [[ -d ~/bin ]] && export PATH="$HOME/bin:$PATH"
 
