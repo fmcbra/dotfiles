@@ -45,8 +45,15 @@ then
   source ~/.bashrc_local
 fi
 
-# Change to $HOME directory on first invokation
-[[ $_bashrc_sourced -eq 1 ]] && cd "$HOME"
+# Handle $SCREEN_CHDIR as set in .screenrc
+if [[ -n $SCREEN_CHDIR ]]
+then
+  cd "$SCREEN_CHDIR"
+  unset SCREEN_CHDIR
+else
+  # Change to $HOME directory on first invokation
+  [[ $_bashrc_sourced -eq 1 ]] && cd "$HOME"
+fi
 
 ##
 # vim: ts=2 sw=2 et fdm=marker :
