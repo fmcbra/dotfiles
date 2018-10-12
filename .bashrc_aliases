@@ -75,6 +75,35 @@ then
   }
 fi
 
+if [[ -n $(type -P lxc-attach) ]]
+then
+  alias lxc-attach="$sudo /usr/bin/lxc-attach"
+  alias lxc-autostart="$sudo /usr/bin/lxc-autostart"
+  alias lxc-cgroup="$sudo /usr/bin/lxc-cgroup"
+  alias lxc-checkconfig="$sudo /usr/bin/lxc-checkconfig"
+  alias lxc-checkpoint="$sudo /usr/bin/lxc-checkpoint"
+  alias lxc-config="$sudo /usr/bin/lxc-config"
+  alias lxc-console="$sudo /usr/bin/lxc-console"
+  alias lxc-copy="$sudo /usr/bin/lxc-copy"
+  alias lxc-create="$sudo /usr/bin/lxc-create"
+  alias lxc-destroy="$sudo /usr/bin/lxc-destroy"
+  alias lxc-device="$sudo /usr/bin/lxc-device"
+  alias lxc-execute="$sudo /usr/bin/lxc-execute"
+  alias lxc-freeze="$sudo /usr/bin/lxc-freeze"
+  alias lxc-info="$sudo /usr/bin/lxc-info"
+  alias lxc-ls="$sudo /usr/bin/lxc-ls"
+  alias lxc-monitor="$sudo /usr/bin/lxc-monitor"
+  alias lxc-snapshot="$sudo /usr/bin/lxc-snapshot"
+  alias lxc-start="$sudo /usr/bin/lxc-start"
+  alias lxc-stop="$sudo /usr/bin/lxc-stop"
+  alias lxc-top="$sudo /usr/bin/lxc-top"
+  alias lxc-unfreeze="$sudo /usr/bin/lxc-unfreeze"
+  alias lxc-unshare="$sudo /usr/bin/lxc-unshare"
+  alias lxc-update-config="$sudo /usr/bin/lxc-update-config"
+  alias lxc-usernsexec="$sudo /usr/bin/lxc-usernsexec"
+  alias lxc-wait="$sudo /usr/bin/lxc-wait"
+fi
+
 unset sudo
 
 ##
