@@ -75,7 +75,7 @@ then
   }
 fi
 
-if [[ -n $(type -P lxc-attach) ]]
+if [[ -n $(type -P lxc-attach) && $EUID -ne 0 ]]
 then
   alias lxc-attach="$sudo /usr/bin/lxc-attach"
   alias lxc-autostart="$sudo /usr/bin/lxc-autostart"
