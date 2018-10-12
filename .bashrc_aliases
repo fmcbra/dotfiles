@@ -63,11 +63,6 @@ then
   alias gimport='git a . && git ci -m Initial\ import'
 fi
 
-if [[ -n $(type -p tig) ]]
-then
-  [[ -d /etc/.git ]] && alias etc-tig='GIT_DIR=/etc/.git tig'
-fi
-
 if [[ -n $(type -P duperemove) ]]
 then
   alias duperemove='duperemove --hashfile=/var/lib/duperemove/hash -d'
