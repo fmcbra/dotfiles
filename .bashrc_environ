@@ -40,9 +40,6 @@ do
 done
 unset bindir
 
-# If ~/bin directory exists, prepend it to PATH
-[[ -d ~/bin ]] && export PATH="$HOME/bin:$PATH"
-
 ##
 # vim: ts=2 sw=2 et fdm=marker :
 ##
