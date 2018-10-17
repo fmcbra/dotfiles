@@ -23,8 +23,7 @@ clear
 echo >&2 -e "$(uname -a)\n"
 
 # Source additional .bashrc_* files
-for _bashrc_file_path in \
-  "$HOME"/.bashrc_{options,environ,history,aliases,prompt,completion,local}
+for _bashrc_file_path in "$HOME"/.bashrc_*
 do
   _bashrc_file="$(basename "$_bashrc_file_path")"
 
