@@ -104,6 +104,8 @@ then
   alias lxc-wait="$sudo /usr/bin/lxc-wait"
 fi
 
+alias sl='screen -ls'
+
 unset sudo
 
 ##
