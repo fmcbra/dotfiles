@@ -37,6 +37,9 @@ do
   source "$_bashrc_file_path"
 done
 
+unset _bashrc_file_path
+unset _bashrc_file
+
 # Clean up PATH using helper script
 [[ -n $(type -P path-clean.py) ]] && export PATH="$(path-clean.py)"
 
