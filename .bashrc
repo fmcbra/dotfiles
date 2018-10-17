@@ -37,13 +37,6 @@ do
   source "$_bashrc_file_path"
 done
 
-# Source ~/.bashrc_local if it exists
-if [[ -f ~/.bashrc_local ]]
-then
-  echo >&2 "... Sourcing ~/.bashrc_local"
-  source ~/.bashrc_local
-fi
-
 # Clean up PATH using helper script
 [[ -n $(type -P path-clean.py) ]] && export PATH="$(path-clean.py)"
 
