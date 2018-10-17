@@ -1,20 +1,20 @@
 SHELL = /bin/bash
 
-DOTFILES =           \
-  .bash_logout       \
-  .bash_profile      \
-  .bashrc            \
-  .bashrc_aliases    \
-  .bashrc_completion \
-  .bashrc_environ    \
-  .bashrc_history    \
-  .bashrc_options    \
-  .bashrc_prompt     \
-  .profile           \
-  .screenrc          \
-  .toprc             \
-  .vim               \
-  .vimrc             \
+DOTFILES =        \
+  .bash_logout    \
+  .bash_profile   \
+  .bashrc         \
+  .bashrc_alias   \
+  .bashrc_comp    \
+  .bashrc_env     \
+  .bashrc_hist    \
+  .bashrc_opts    \
+  .bashrc_prompt  \
+  .profile        \
+  .screenrc       \
+  .toprc          \
+  .vim            \
+  .vimrc          \
 
 
 ifeq ($(origin HOME), undefined)
