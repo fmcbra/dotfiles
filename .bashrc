@@ -44,6 +44,9 @@ then
   source ~/.bashrc_local
 fi
 
+# Clean up PATH using helper script
+[[ -n $(type -P path-clean.py) ]] && export PATH="$(path-clean.py)"
+
 # Handle $SCREEN_CHDIR as set in .screenrc
 if [[ -n $SCREEN_CHDIR ]]
 then
