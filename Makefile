@@ -7,6 +7,7 @@ DOTFILES =        \
   .bashrc_alias   \
   .bashrc_comp    \
   .bashrc_env     \
+  .bashrc_func    \
   .bashrc_hist    \
   .bashrc_opts    \
   .bashrc_prompt  \
