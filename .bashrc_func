@@ -1,0 +1,61 @@
+##
+# ~/.bashrc_func
+##
+
+## {{{ s()
+function s()
+{
+  function err() { echo "error: s():" "$@" >&2; }
+
+  [[ $# -eq 0 ]] && {
+    echo "Usage: s <screen-name>" >&2
+    return 1
+  }
+
+  [[ $# -ne 1 ]] && {
+    err "exactly one argument required (got $#)"
+    return 1
+  }
+
+  local name="$1"
+  local rc="$HOME/.screenrc.$name"
+  [[ -f $rc ]] || {
+    err "screenc file ~/.screenrc.$name doesn't exist"
+  }
+
+  screen -l -c "$rc" -mS sys
+
+  return $?
+}
+## }}}
+
+## {{{ sr()
+function sr()
+{
+  function err() { echo "error: s():" "$@" >&2; }
+
+  [[ $# -eq 0 ]] && {
+    echo "Usage: s <screen-name>" >&2
+    return 1
+  }
+
+  [[ $# -ne 1 ]] && {
+    err "exactly one argument required (got $#)"
+    return 1
+  }
+
+  local name="$1"
+  local rc="$HOME/.screenrc.$name"
+  [[ -f $rc ]] || {
+    err "screenc file ~/.screenrc.$name doesn't exist"
+  }
+
+  screen -dr "$name"
+
+  return $?
+}
+## }}}
+
+##
+# vim: ts=2 sw=2 et fdm=marker :
+##
