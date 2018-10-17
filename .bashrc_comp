@@ -1,5 +1,5 @@
 ##
-# ~/.bashrc_completion
+# ~/.bashrc_comp
 ##
 
 if ! shopt -oq posix
