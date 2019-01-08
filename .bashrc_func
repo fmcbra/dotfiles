@@ -23,7 +23,7 @@ function s()
     err "screenc file ~/.screenrc.$name doesn't exist"
   }
 
-  screen -l -c "$rc" -mS sys
+  screen -l -c "$rc" -mS "$name"
 
   return $?
 }
