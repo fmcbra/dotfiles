@@ -19,6 +19,7 @@ alias ap='apt-get purge'
 alias adu='apt-get dist-upgrade'
 alias asu='apt-get safe-upgrade'
 
+alias acl='apt-get clean'
 alias aar='apt-get autoremove --purge'
 
 if [[ -n $(type -p apt) ]]
