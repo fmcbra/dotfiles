@@ -56,6 +56,23 @@ function sr()
 }
 ## }}}
 
+## {{{ avc-denials()
+function avc-denials()
+{
+  journalctl --boot \
+    |grep -i 'AVC avc:.*denied' \
+    |sed 's/^.* AVC avc:  //g' \
+    |grep ^denied
+}
+## }}}
+
+## {{{ avc-log()
+function avc-log()
+{
+  journalctl --boot |grep avc
+}
+## }}}
+
 ##
 # vim: ts=2 sw=2 et fdm=marker :
 ##
