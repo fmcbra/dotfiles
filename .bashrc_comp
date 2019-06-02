@@ -2,15 +2,12 @@
 # ~/.bashrc_comp
 ##
 
-if ! shopt -oq posix
-then
-  for _bash_comp_file in /usr/share/bash-completion/bash_completion /etc/bash_completion
-  do
-    [[ -f $_bash_comp_file ]] || continue
-    source $_bash_comp_file
-    break
-  done
-fi
+for _bash_comp_file in /usr/share/bash-completion/bash_completion /etc/bash_completion
+do
+  [[ -f $_bash_comp_file ]] || continue
+  source $_bash_comp_file
+  break
+done
 
 ##
 # vim: ts=2 sw=2 et fdm=marker :
